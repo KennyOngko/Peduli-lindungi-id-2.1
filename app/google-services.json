@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "660748655475",
+    "project_id": "peduli-lindungi-id",
+    "storage_bucket": "peduli-lindungi-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660748655475:android:63655eae8967afc3b90306",
+        "android_client_info": {
+          "package_name": "com.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660748655475-gpshn47tamcv85f2d8g43q7061ohh8ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvnbsx437r-oU2EowU2g1wdxgNMw3CVj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660748655475-gpshn47tamcv85f2d8g43q7061ohh8ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

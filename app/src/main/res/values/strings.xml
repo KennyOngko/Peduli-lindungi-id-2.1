@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Peduli Lindungi</string>
+    <string name="splashscreen">Splash Screen</string>
+    <string name="Registrasi">Registrasi</string>
+    <string name="FullName"> Full Name</string>
+    <string name="image_logo">Image Logo</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="haveAccount">Are you have an account ? Login here.</string>
+    <string name="Login">Login</string>
+
+    <string name="donthaveAccount">Dont have account ? Sign Up here.</string>
+=======
+    <string name="dontHaveAccount">Don\'t have account ? Register here.</string>
+>>>>>>> 0e0dd5f0d44ae190a247d0a67b439d3a670bf362
+    <string name="Dashboard">Dashboard </string>
+    <string name="LogOut">Logout</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="user">User</string>
+    <string name="menu">drawer_menu</string>
+    <string name="welcome">Welcome </string>
+    <string name="description">Scan your magnetic resonance imaging (MRI)</string>
+    <string name="title">Body Imaging Anomaly Scanner</string>
+    <string name="screening">Screening</string>
+    <string name="about_us">About Us</string>
+    <string name="history">History</string>
+    <string name="developer">Developers behind this app:</string>
+    <string name="amirah">Amirah Aulia Fitri</string>
+    <string name="id_amirah">A2962676</string>
+    <string name="linkedIn_rafi">Rafi M.</string>
+    <string name="ravi">Rafi Muhammad Daffa</string>
+    <string name="id_ravi">A0101030</string>
+    <string name="andhika">Andhika Yusup Maulana</string>
+    <string name="id_andhika">M0101035</string>
+    <string name="nurul">Nurul Srianda Putri</string>
+    <string name="id_nurul">M0101038</string>
+    <string name="darryl">Darryl Egbert Nangoi</string>
+    <string name="id_darryl">C0050463</string>
+    <string name="kenny">Kenny Ongko</string>
+    <string name="id_kenny">C0050499</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="EnterData">Enter your Image</string>
+    <string name="address">Address</string>
+    <string name="gender">Gender</string>
+    <string name="diagnose">Diagnose</string>
+    <string name="name">Nama</string>
+    <string name="xray">X-Ray Image</string>
+    <string name="addImage">Add Image</string>
+    <string name="title_FullName">Fullname :</string>
+    <string name="your_fullName">Your fullname</string>
+    <string name="your_email">Your email</string>
+    <string name="title_email">Email :</string>
+    <string name="selection_prompt">Please select what prediction you want to seek?</string>
+    <string name="covid_19">COVID-19</string>
+    <string name="pneumonia">Pneumonia</string>
+    <string name="screening_result">Screening Result</string>
+    <string name="username">Username</string>
+    <string name="requested_diagnosis_type">Requested Diagnosis Type</string>
+    <string name="covid_19_pneumonia">COVID-19 / Pneumonia</string>
+    <string name="result">Result</string>
+    <string name="results_here">Results here</string>
+    <string name="screening_image">Screening Image</string>
+    <string name="request_date">Request Date</string>
+    <string name="date_of_request">Date of Request</string>
+    <string name="screening_history">Screening History</string>
+</resources>
