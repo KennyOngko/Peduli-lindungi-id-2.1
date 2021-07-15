@@ -2,15 +2,21 @@ package com.capstoneproject.ui
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.Firestore
+import com.capstoneproject.R
 import com.capstoneproject.databinding.ActivityHistoryBinding
 import com.capstoneproject.model.History
 import com.capstoneproject.ui.adapter.HistoryViewAdapter
 import com.capstoneproject.utils.Constants
+import java.util.*
+
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -47,6 +53,5 @@ class HistoryActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
     }
 }

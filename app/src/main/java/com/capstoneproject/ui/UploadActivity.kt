@@ -5,11 +5,15 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -19,11 +23,16 @@ import com.capstoneproject.api.PredictorApi
 import com.capstoneproject.model.PredictionRequest
 import com.capstoneproject.utils.Constants
 import com.capstoneproject.utils.GlideLoader
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
 import kotlinx.android.synthetic.main.activity_upload.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
+
 
 class UploadActivity : AppCompatActivity(),View.OnClickListener {
 
@@ -36,6 +45,9 @@ class UploadActivity : AppCompatActivity(),View.OnClickListener {
     private var mSelectedModel: String = ""
     private var mSelectedImage: Uri? = null
     private var mImageURL: String = ""
+    lateinit var client : FusedLocationProviderClient
+    var longitude : String = ""
+    var latitude : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +60,7 @@ class UploadActivity : AppCompatActivity(),View.OnClickListener {
         val btn_add_image_upload: Button = findViewById(R.id.btn_add_image_upload)
         val btn_diagnose: Button = findViewById(R.id.btn_diagnose)
         progressBar = findViewById(R.id.progresbar)
+        client = LocationServices.getFusedLocationProviderClient(getBaseContext());
 
 
         val sharedPreferences = getSharedPreferences(Constants.NAME_PREFERENCES, Context.MODE_PRIVATE)
@@ -63,7 +76,30 @@ class UploadActivity : AppCompatActivity(),View.OnClickListener {
         btn_add_image_upload.setOnClickListener(this@UploadActivity)
         btn_diagnose.setOnClickListener(this@UploadActivity)
 
+        getLocation();
+    }
 
+    fun getLocation () {
+        if(checkPermission()) {
+            //permission grantet
+            val task: Task<Location> = client.lastLocation
+            task.addOnSuccessListener(object : OnSuccessListener<Location?> {
+                override fun onSuccess(location: Location?) {
+                    if (location != null) {
+                        longitude = location.longitude.toString()
+                        latitude = location.latitude.toString()
+                    }
+                }
+            })
+        } else {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),44);
+        }
+    }
+
+    fun checkPermission() : Boolean {
+        //boolean
+        return ActivityCompat.checkSelfPermission(getBaseContext() , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
     override fun onClick(v: View?) {
@@ -103,7 +139,7 @@ class UploadActivity : AppCompatActivity(),View.OnClickListener {
     }
     private fun updateImage(){
         if (mImageURL.isNotEmpty()) {
-            Firestore().addDiagnosisHistory(this, mSelectedModel, mImageURL)
+            Firestore().addDiagnosisHistory(this, mSelectedModel, mImageURL , longitude , latitude)
         }
     }
 
@@ -116,6 +152,11 @@ class UploadActivity : AppCompatActivity(),View.OnClickListener {
             }else{
                 Toast.makeText(this,"read storage permission is denied.", Toast.LENGTH_SHORT).show()
 
+            }
+        }
+        if(requestCode == 44){
+            if (grantResults.isNotEmpty()&& grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                getLocation();
             }
         }
     }

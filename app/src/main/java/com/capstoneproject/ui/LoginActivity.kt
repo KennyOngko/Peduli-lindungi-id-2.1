@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         Log.i("fullName", user.fullName)
 
         val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
-        Toast.makeText(this,"Login successfully.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Login successfuly.", Toast.LENGTH_SHORT).show()
         startActivity(intent)
         finish()
 

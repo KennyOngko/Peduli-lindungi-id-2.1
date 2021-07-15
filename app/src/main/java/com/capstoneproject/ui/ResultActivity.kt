@@ -1,13 +1,21 @@
 package com.capstoneproject.ui
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.Firestore
+import com.capstoneproject.R
 import com.capstoneproject.databinding.ActivityResultBinding
 import com.capstoneproject.utils.Constants
 import com.capstoneproject.utils.GlideLoader
+import java.util.*
+
 
 class ResultActivity : AppCompatActivity() {
 
@@ -56,6 +64,11 @@ class ResultActivity : AppCompatActivity() {
         activityBinding.date.text = data["request_date"] as String? ?: ""
 
         GlideLoader(this).loadImage(Uri.parse(data["image"] as String), activityBinding.screeningImage)
-
+        activityBinding.buttonMap.setOnClickListener{
+            val intent = Intent(this@ResultActivity, MapGoogle::class.java)
+            intent.putExtra("LATITUDE" , data["latitude"] as String);
+            intent.putExtra("LONGITUDE" , data["longitude"] as String);
+            startActivity(intent)
+        }
     }
 }

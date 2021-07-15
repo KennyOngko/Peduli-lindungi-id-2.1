@@ -121,7 +121,7 @@ class Firestore {
             }
     }
 
-    fun addDiagnosisHistory(activity: Activity, model: String, imageURL: String) {
+    fun addDiagnosisHistory(activity: Activity, model: String, imageURL: String , latitude : String , longitude : String) {
         val dateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH)
         val date = dateFormat.format(Date())
         val newHistoryData = HashMap<String, Any>()
@@ -130,6 +130,8 @@ class Firestore {
         newHistoryData["status"] = "doing"
         newHistoryData["user_id"] = getCurrentUser()
         newHistoryData["request_date"] = date
+        newHistoryData["longitude"] = longitude
+        newHistoryData["latitude"] = latitude
 
         fstore.collection(Constants.HISTORY)
             .add(newHistoryData)
@@ -188,6 +190,8 @@ class Firestore {
                             user_id = data["user_id"] as String,
                             models = data["predictions"] as ArrayList<String>,
                             imageUrl = data["image"] as String,
+                            longitude = data["longitude"] as String,
+                            latitude = data["latitude"] as String,
                             request_date = data["request_date"] as String,
                             positivePercentage = ((
                                     data["result"] as HashMap<String, Any>

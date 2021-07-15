@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +14,16 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
-        <activity android:name=".ui.HistoryActivity"
-            android:theme="@style/Theme.FinalProject.NoActionBar"/>
+        <activity android:name=".ui.MapGoogle"></activity>
+        <activity android:name=".ui.GoogleMap" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_api" />
+
+        <activity
+            android:name=".ui.HistoryActivity"
+            android:theme="@style/Theme.FinalProject.NoActionBar" />
         <activity
             android:name=".ui.ResultActivity"
             android:theme="@style/Theme.FinalProject.NoActionBar" />
