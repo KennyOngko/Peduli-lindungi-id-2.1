@@ -175,7 +175,7 @@ class Firestore {
             }
     }
 
-    fun getScreeningHistoryList(activity: Activity) {
+    fun getScreeningHistoryList(activity: Activity, type: String) {
         fstore.collection(Constants.HISTORY)
             .whereEqualTo("user_id", getCurrentUser())
             .get()
@@ -202,7 +202,20 @@ class Firestore {
                                     )[chosenDiagnosis] as HashMap<String, Any>
                                     )["normal"].toString().toDouble() * 100
                         )
-                        result.add(history)
+                        if(type != "null"){
+                            if(type == "covid"){
+                                if(history.models[0] == "covid"){
+                                    result.add(history);
+                                }
+                            }
+                            if(type == "pneumonia"){
+                                if(history.models[0] == "pneumonia"){
+                                    result.add(history);
+                                }
+                            }
+                        }else{
+                            result.add(history);
+                        }
                     }
                     catch(e: Exception) { }
                 }

@@ -21,10 +21,22 @@ import java.util.*
 class HistoryActivity : AppCompatActivity() {
 
     private lateinit var activityBinding: ActivityHistoryBinding
+    private var type: String = "covid"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_history)
         activityBinding = ActivityHistoryBinding.inflate(layoutInflater)
+        activityBinding.ktlBtn.setOnClickListener{
+            Firestore().getScreeningHistoryList(this, type);
+            if(type == "pneumonia"){
+                activityBinding.ktlBtn.setText("Covid")
+                type = "covid"
+            }else{
+                activityBinding.ktlBtn.setText("Pneumonia")
+                type = "pneumonia"
+            }
+        }
 
         val sharedPreferences = getSharedPreferences(
             Constants.NAME_PREFERENCES,
@@ -33,7 +45,7 @@ class HistoryActivity : AppCompatActivity() {
         activityBinding.username.text =
             sharedPreferences.getString(Constants.LOGGED_USERNAME, "").toString()
 
-        Firestore().getScreeningHistoryList(this)
+        Firestore().getScreeningHistoryList(this, type);
 
         setContentView(activityBinding.root)
     }
